@@ -33,7 +33,7 @@
 }
 .hero12{
     position: absolute;
-    top: 450px;
+    top: 80%;
 
 }
 
@@ -49,7 +49,7 @@
         margin-left: 43%;
     }
     .hero12{
-        top: 400px;
+        top: 300px;
     }
 }
 @media (max-width: 1050px ){
@@ -60,7 +60,7 @@
         top: 130px;
     }
     .hero12{
-        top: 330px;
+        top: 230px;
     }
     
 }
@@ -72,12 +72,21 @@
         top: 80px;
     }
     .hero12{
-        top: 280px;
+        top: 170px;
     }
 }
 @media screen and (max-width: 550px) {
     .Hero1Container{
         height: 23vh
+    }
+    .hero12{
+        top: 110px;
+    }
+    
+    
+}@media screen and (max-width: 380px) {
+    .hero12{
+        top: 80px;
     }
     
     
