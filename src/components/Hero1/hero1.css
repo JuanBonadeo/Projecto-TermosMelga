@@ -31,7 +31,15 @@
     top: 250px;
     margin-left: 40%;
 }
+.hero12{
+    position: absolute;
+    top: 450px;
 
+}
+
+.carousel.slide > div.carousel-indicators{
+    display: none;
+}
 @media (max-width: 1200px ){
     .Hero1Container{
         height: 68vh
@@ -39,6 +47,9 @@
     .hero3{
         top: 200px;
         margin-left: 43%;
+    }
+    .hero12{
+        top: 400px;
     }
 }
 @media (max-width: 1050px ){
@@ -48,17 +59,20 @@
     .hero3{
         top: 130px;
     }
+    .hero12{
+        top: 330px;
+    }
     
 }
 @media (max-width: 720px ){
     .Hero1Container{
         height: 40vh
     }
-    .slide .carousel-control-prev,.slide .carousel-control-next{
-        display: none;
-    }
     .hero3{
         top: 80px;
+    }
+    .hero12{
+        top: 280px;
     }
 }
 @media screen and (max-width: 550px) {
