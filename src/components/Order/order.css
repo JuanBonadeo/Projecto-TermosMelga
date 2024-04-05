@@ -5,21 +5,25 @@
     justify-content:right;
     font-size: .8em;
     height: min-content;
+    background-color: #f9eed6;
   }
   .SelectOrderContainer select{
     height: min-content;
     padding: .3em;
+    background-color: #fcf6e9;
+
   }.SelectOrderContainer h5{
     font-size: 1em;
     text-align: right;
   }
   
   .select option {
-    background-color: #fff; 
-    border: 1px solid #b00101; 
+    background-color: #f9eed6; 
+    border: 1px solid #000000; 
     color: #000000;  
     cursor: pointer;
+    border-radius: 0;
   }  .select option:hover{
-    background-color: #bebebe; 
+    background-color: #f9eed6; 
     cursor: pointer;
   }
