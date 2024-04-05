@@ -1,0 +1,25 @@
+.SelectOrderContainer {
+    display: flex;
+    flex-direction: row;
+    gap: .5em;
+    justify-content:right;
+    font-size: .8em;
+    height: min-content;
+  }
+  .SelectOrderContainer select{
+    height: min-content;
+    padding: .3em;
+  }.SelectOrderContainer h5{
+    font-size: 1em;
+    text-align: right;
+  }
+  
+  .select option {
+    background-color: #fff; 
+    border: 1px solid #b00101; 
+    color: #000000;  
+    cursor: pointer;
+  }  .select option:hover{
+    background-color: #bebebe; 
+    cursor: pointer;
+  }

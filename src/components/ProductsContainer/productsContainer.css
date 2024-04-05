@@ -1,0 +1,49 @@
+.productsContainer{
+    display: flex;
+    flex-direction: column;
+    gap: 2em;
+    flex-wrap: wrap;
+    justify-content: space-around;
+    align-items: center;
+    margin: 3em auto;
+    width: 90%;
+    color: #000;
+}
+.ProductList{
+    display: flex;
+    gap: 2em;
+    flex-wrap: wrap;
+    justify-content: center;
+    
+}
+.h1Order{
+    display: grid;
+    grid-template-columns: 4fr 1fr;
+    width: 80%;
+    margin: 0 auto;
+    margin-top: 2em;
+    align-items: center;
+}.h1Order h1{
+    font-weight: 600;
+    display: flex;
+    justify-content: center;
+}
+.noProducts{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 50vh;
+    width: 100%;
+    font-size: 3em;
+    color: #000;
+}
+@media screen and (max-width: 768px){
+    .h1Order{
+        
+        width: 90%;
+        margin: 0 auto;
+        margin-top: 1em;
+        align-items: center;
+    }
+    
+}
