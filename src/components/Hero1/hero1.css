@@ -26,19 +26,27 @@
     margin: 0 auto;
     width: 100%;
 }
-.imgHero3{
-    filter: brightness(.8)
+.hero3{
+    position: absolute;
+    top: 250px;
+    margin-left: 40%;
 }
 
 @media (max-width: 1200px ){
     .Hero1Container{
         height: 68vh
     }
-    
+    .hero3{
+        top: 200px;
+        margin-left: 43%;
+    }
 }
 @media (max-width: 1050px ){
     .Hero1Container{
         height: 60vh
+    }
+    .hero3{
+        top: 130px;
     }
     
 }
@@ -49,12 +57,15 @@
     .slide .carousel-control-prev,.slide .carousel-control-next{
         display: none;
     }
-
+    .hero3{
+        top: 80px;
+    }
 }
 @media screen and (max-width: 550px) {
     .Hero1Container{
-        height: 26vh
+        height: 23vh
     }
+    
     
 }
 
