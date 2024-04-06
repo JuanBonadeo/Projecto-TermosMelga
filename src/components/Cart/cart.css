@@ -12,9 +12,7 @@
 }
 .cartContainer h1 {
     font-size: 3em;
-    border-bottom: 1px solid #000;
     margin-top: .6em;
-
 }
 .cartItems{
     width: 90%;

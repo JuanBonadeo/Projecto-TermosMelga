@@ -54,7 +54,7 @@ export default function ProductsContainer() {
   if(categoryId){
     return (
       <>
-      <div className='h1Order'>
+      <div className='h1Order h1OrderCategory'>
         <h1>Nuestros {categoryId}</h1>
         <OrderList handleOrderChange={handleOrderChange}/>
       </div>
