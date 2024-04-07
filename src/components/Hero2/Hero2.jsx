@@ -7,7 +7,7 @@ import '../Hero2/hero2.css';
  export const Hero2 = () => {
   const [isVisible, setIsVisible] = React.useState(false);
   const { ref, inView } = useInView({
-    threshold: 0.1, // Cambia el valor según tus necesidades
+    threshold: 0.5, // Cambia el valor según tus necesidades
   });
 
   // Detecta cuándo el componente está visible en la pantalla
@@ -24,7 +24,7 @@ import '../Hero2/hero2.css';
       initial={{ opacity: 0, scale: 0}}
       animate={{ opacity: isVisible ? 1 : 0, scale: isVisible ? 1 : 0 }}
       
-      transition={{ duration: 4, delay: 3,type:"spring", stiffness: 160, damping: 20}}
+      transition={{ duration: 4, delay: 1,type:"spring", stiffness: 160, damping: 20}}
     >
       <img
         src='https://firebasestorage.googleapis.com/v0/b/termomelga.appspot.com/o/heros%2Fcombos.jpg?alt=media&token=45a636ef-aacb-47d5-af51-453e0d17176a'
