@@ -7,7 +7,7 @@ import '../Hero2/hero2.css';
  export const Hero2 = () => {
   const [isVisible, setIsVisible] = React.useState(false);
   const { ref, inView } = useInView({
-    threshold: 0.2, // Cambia el valor según tus necesidades
+    threshold: 0.5, // Cambia el valor según tus necesidades
   });
 
   // Detecta cuándo el componente está visible en la pantalla
