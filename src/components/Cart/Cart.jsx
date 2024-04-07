@@ -35,11 +35,9 @@ const Cart = () => {
       if (result.isConfirmed) {
         let mensajePedido = 'Hola, este es mi pedido:\n\n';
         cart.forEach((prod) => {
-          mensajePedido += `${prod.nombre} - Cantidad: ${
-            prod.quantity
-          } - Precio: ${calcularDescuento(prod.precio * prod.quantity,prod.descuento)}\n`;
+          mensajePedido += `*${prod.nombre}* Cantidad: ${prod.quantity}-Precio: ${calcularDescuento(prod.precio * prod.quantity,prod.descuento)}\n`;
         });
-        mensajePedido += `\nTotal: ${total}\n`;
+        mensajePedido += `\nTotal: *${formatearMoneda(total)}*`;
 
         // Completar con el número de WhatsApp
         const numeroWhatsApp = '5493412290234';
