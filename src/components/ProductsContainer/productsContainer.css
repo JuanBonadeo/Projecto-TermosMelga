@@ -46,8 +46,18 @@
         width: 90%;
         margin: 0 auto;
         align-items: center;
-    }.h1Order *{
-        margin-top: 1em;
     }
-    
+}
+
+@media screen and (max-width: 600px){
+    .h1Order{
+        width: 95%;
+        flex-direction: column;
+        display: flex;
+        gap: .5em;
+    }.h1Order h1{
+        font-size: 1.2em;
+    }.h1Order *{
+        margin-top: 0;
+    }
 }

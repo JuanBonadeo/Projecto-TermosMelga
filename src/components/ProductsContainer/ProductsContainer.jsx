@@ -7,6 +7,7 @@ import ProductList from './ProductList'
 import { Loader } from '../Loader/Loader'
 import { useParams } from 'react-router-dom'
 import OrderList from '../Order/Order'
+import { motion, spring } from 'framer-motion';
 
 
 
@@ -49,25 +50,27 @@ export default function ProductsContainer() {
     return <Loader/>;
   }
   if(products.length === 0){
-    return <h1 className='noProducts'>No hay productos disponibles</h1>
+    return <motion.h1 className='noProducts'
+    initial={{opacity: 0, scale: 0}} animate={{opacity:1, scale:1}} transition={{ duration: 2, type:"spring", stiffness: 160, damping: 20}}
+    >No hay productos disponibles</motion.h1>
   } 
   if(categoryId){
     return (
       <>
-      <div className='h1Order h1OrderCategory'>
+      <motion.div className='h1Order h1OrderCategory' initial={{opacity: 0, scale: 0}} animate={{opacity:1, scale:1}} transition={{ duration: 2, type:"spring", stiffness: 160, damping: 20}}>
         <h1>Nuestros {categoryId}</h1>
         <OrderList handleOrderChange={handleOrderChange}/>
-      </div>
+      </motion.div>
       <ProductList products={products} orderBy={orderBy}/>
       </>
     )
   }
   return (
     <>
-    <div className='h1Order'>
+    <motion.div className='h1Order' initial={{opacity: 0, scale: 0}} animate={{opacity:1, scale:1}} transition={{ duration: 2, type:"spring", stiffness: 160, damping: 20}}>
       <h1>Nuestros Productos</h1>
       <OrderList handleOrderChange={handleOrderChange}/>
-    </div>
+    </motion.div>
     <ProductList products={products} orderBy={orderBy}/>
     </>
       

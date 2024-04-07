@@ -9,7 +9,7 @@ const Hero1 = () =>{
         <Carousel.Item className='Hero1Container'>
           <img
             className="imgHero1"
-            src=' https://firebasestorage.googleapis.com/v0/b/termomelga.appspot.com/o/heros%2Fhero0.jpg?alt=media&token=67bfb9f2-2cf8-48eb-88d8-659ad0edfb8e '
+            src='https://firebasestorage.googleapis.com/v0/b/termomelga.appspot.com/o/heros%2Fhero1Mobile.jpg?alt=media&token=464481d1-1d29-44aa-8bcf-f5a17a24ea7b'
             alt="First-slide"
           />
           <Carousel.Caption className='HeroCaption hero12'>
@@ -20,7 +20,7 @@ const Hero1 = () =>{
         <Carousel.Item className='Hero1Container'>
           <img
             className="imgHero1"
-            src='https://firebasestorage.googleapis.com/v0/b/termomelga.appspot.com/o/heros%2Fhero1.jpg?alt=media&token=a284a4d1-5920-4a8a-92d2-c72c868a86a2'
+            src='https://firebasestorage.googleapis.com/v0/b/termomelga.appspot.com/o/heros%2Fhero1.jpg?alt=media&token=403b9243-1506-4708-8c4e-bb1acc5b3a4c'
             alt="Second-slide"
           />
           <Carousel.Caption className='HeroCaption hero3'>
@@ -31,7 +31,7 @@ const Hero1 = () =>{
         <Carousel.Item className='Hero1Container'>
           <img
             className="imgHero1 imgHero3"
-            src='https://firebasestorage.googleapis.com/v0/b/termomelga.appspot.com/o/heros%2Fhero2black.jpg?alt=media&token=197fcb10-b6bd-4afa-86eb-d56a98fbbac2'
+            src='https://firebasestorage.googleapis.com/v0/b/termomelga.appspot.com/o/heros%2Fhero2Mobile.jpg?alt=media&token=4cb2bbe6-1b10-4e1b-a40e-31911921aa98'
             alt="Third-slide"
           />
           <Carousel.Caption className='HeroCaption hero12'>
