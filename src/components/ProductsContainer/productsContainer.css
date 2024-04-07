@@ -54,10 +54,9 @@
         width: 95%;
         flex-direction: column;
         display: flex;
-        gap: .5em;
+        gap: 0em;
     }.h1Order h1{
         font-size: 1.2em;
-    }.h1Order *{
-        margin-top: 0;
+        margin-top: 1em;
     }
 }

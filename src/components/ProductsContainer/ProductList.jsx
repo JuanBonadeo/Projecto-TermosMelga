@@ -1,4 +1,5 @@
 import ProductCard from "../ProductCard/ProductCard";
+import UpButton from "../UpButton/UpButton";
 import './productsContainer.css'
 import { motion } from "framer-motion";
 import React from 'react'
@@ -24,6 +25,7 @@ if (orderBy === "precioAsc") {
           {filteredProducts.map(product => <ProductCard key={product.id} {...product}/>)}
         </motion.div>
     </div> 
+    <UpButton/>
 </>
   )
 }

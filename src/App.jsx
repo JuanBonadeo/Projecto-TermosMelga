@@ -8,10 +8,6 @@ import { CartProvider } from './context/CartContext'
 import Cart from './components/Cart/Cart'
 import ProductInfoView from './components/ProductInfo/ProudctInfoView'
 import ProductsContainer from './components/ProductsContainer/ProductsContainer'
-import UpButton from './components/UpButton/UpButton'
-
-
-
 
 function App() {
 
@@ -31,7 +27,6 @@ function App() {
         </Routes>  
       </div>
       <WspButton/>
-      <UpButton/>
       <Footer/>
       </CartProvider>
     </BrowserRouter>
