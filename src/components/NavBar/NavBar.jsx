@@ -28,7 +28,7 @@ function Header() {
             <Link to='/categoria/mates' className="primary" >Mates</Link>
             <Link to="/categoria/yerbas" className="primary" onClick={closeNavbar}>Yerbas</Link>
             <Link to="/categoria/bombillas" className="primary" onClick={closeNavbar}>Bombillas</Link>
-            <Link to="/categoria/bolsos" className="primary" onClick={closeNavbar}>Bolsos Materos</Link>
+            <Link to="/categoria/materas" className="primary" onClick={closeNavbar}>Materas</Link>
             <Link to="/categoria/termos" className="primary" onClick={closeNavbar}>Termos</Link>
           </Nav>
         </Navbar.Collapse>

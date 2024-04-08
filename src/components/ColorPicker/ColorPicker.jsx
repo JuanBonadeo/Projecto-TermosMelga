@@ -1,20 +1,22 @@
-import '../ColorPicker/colorPicker.css'
-import { Link } from 'react-router-dom'
-import { useEffect, useState } from 'react'
+import '../ColorPicker/colorPicker.css';
+import { useEffect, useState } from 'react';
+import './colorPicker.css';
 
- const ColorPicker = (colors) => {
-    
+const ColorPicker = (props) => {
+    const { colors, color, action } = props; // Destructuración de props
+
     return (
         <div className="colorContainer">
             <h5>Color: {color}</h5>
             <div className='colors'>
-                {colors.map((color) => (
-                    <button key={color.id} onClick={() => handleColor(color.id)}>
-                <div className={color.color}></div>
-            </button>
-      ))}
-    </div>
-  </div>
-    )
- }
- export default ColorPicker
+                {colors.map((color, index) => ( // Cambiado color a colorItem para evitar confusión
+                    <button key={index} onClick={() => action(index)}>
+                        <div className={color.color}></div> {/* Cambiado color a colorItem */}
+                    </button>
+                ))}
+            </div>
+        </div>
+    );
+};
+
+export default ColorPicker;

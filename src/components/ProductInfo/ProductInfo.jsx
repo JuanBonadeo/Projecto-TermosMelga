@@ -10,6 +10,7 @@ import AccountBalanceIcon from '@mui/icons-material/AccountBalance';
 import { CartContext } from '../../context/CartContext';
 import { motion } from 'framer-motion';
 import AddToCartIcon from '../AddtoCartBtn.js/AddToCartBtn';
+import ColorPicker from '../ColorPicker/ColorPicker';
 
 
 
@@ -55,16 +56,8 @@ export default function ProductInfo({id, nombre, precio, img1,img2,img3, descrip
         <h5 >Precio: <span className='price'>{formatearMoneda(precio)}</span><span className='discountedPrice'>{nuevoPrecio}</span></h5>
         <AddToCartIcon onAdd={handleOnAdd}/>
       </div>
-      <div className="colorContainer">
-    <h5>Color: {color}</h5>
-    <div className='colors'>
-      {colors.map((color, index) => (
-        <button key={index} onClick={() => handleColor(index)}>
-          <div className={color.color}></div>
-        </button>
-      ))}
-    </div>
-  </div>
+
+      <ColorPicker colors={colors} color={color} action={handleColor}/>
       
       <h4>Categoria: {categoria.charAt(0).toUpperCase() + categoria.slice(1)}</h4>
       <div className="infoPayment">
@@ -113,17 +106,7 @@ export default function ProductInfo({id, nombre, precio, img1,img2,img3, descrip
           <h5>Precio: {formatearMoneda(precio)}</h5>
           <AddToCartIcon onAdd={handleOnAdd}/>
         </div>
-        <h4>Categoria: {categoria.charAt(0).toUpperCase() + categoria.slice(1)}</h4>
-        <div className="colorContainer">
-          <h5>Color: {color}</h5>
-            <div className='colors'>
-                {colors.map((color, index) => (
-               <button key={index} onClick={() => handleColor(index)}>
-                 <div className={color.color}></div>
-          </button>
-      ))}
-    </div>
-  </div>
+        <ColorPicker colors={colors} color={color} action={handleColor}/>
         <div className="infoPayment">
           <h5>Metodos de Pago:</h5>
           <div className="paymentMethods">
