@@ -16,16 +16,7 @@
     min-height: 360px;
     cursor: pointer;
 }
-.imgProduct2{
-    display: none;
-}
-.img:hover .imgProduct {
-    display: none;
-}
 
-.img:hover .imgProduct2 {
-    display: block;
-}
 .img{
     transition: all .4s ease-in-out;
 }.img:hover{
