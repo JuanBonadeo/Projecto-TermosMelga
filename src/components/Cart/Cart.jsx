@@ -14,11 +14,11 @@ const Cart = () => {
     return useContext(CartContext)
 }
   const { cart, addItem, totalQuantity, removeItem, isInCart, total, clearCart, updateQuantity,updateQuantitySelect, formatearMoneda, calcularDescuento} = useCart();
-  const handleOnAdd = (id, x) => {
+  const handleOnAdd = (id, color, x) => {
     updateQuantity(id, x)
   }
-  const handleOnChange = (id,x) => {;
-    updateQuantitySelect(id, x);
+  const handleOnChange = (id, color, x) => {;
+    updateQuantitySelect(id,color, x);
   }
   useEffect(() => {
     window.scrollTo(0, 0);
@@ -35,7 +35,7 @@ const Cart = () => {
       if (result.isConfirmed) {
         let mensajePedido = 'Hola, este es mi pedido:\n\n';
         cart.forEach((prod) => {
-          mensajePedido += `*${prod.nombre}* Cantidad: ${prod.quantity}-Precio: ${calcularDescuento(prod.precio * prod.quantity,prod.descuento)}\n`;
+          mensajePedido += `*${prod.nombre}* ${prod.color} Cantidad: *${prod.quantity}* Precio: *${calcularDescuento(prod.precio * prod.quantity,prod.descuento)}*\n`;
         });
         mensajePedido += `\nTotal: *${formatearMoneda(total)}*`;
 
@@ -82,21 +82,21 @@ const Cart = () => {
                             transition={{duration: 1.2, ease: "easeInOut", delay: 0.5, type: "spring"}}
                             
                             
-                            className='productInCart' key={prod.id}>
+                            className='productInCart' key={prod.id+prod.color}>
                                 <div className="imgName">
-                                  <Link to={`/producto/${prod.id}`}><img className="" src={prod.img1}></img>  </Link> 
+                                  <Link to={`/producto/${prod.id}`}><img className="" src={prod.img}></img>  </Link> 
                                   <Link to={`/producto/${prod.id}`}><h4 className='title'>{prod.nombre}</h4></Link>
                                 </div>
                                 <div className="controls"> 
                                 <QuantityControl className="select"  prod={prod} updateQuantity={handleOnChange} />
-                                  <div className="quantityControl">
-                                    <button onClick={() => updateQuantity(prod.id, -1)}>-</button>
+                                <div className="quantityControl">
+                                    <button onClick={() => updateQuantity(prod.id, prod.color, -1)}>-</button>
                                     <p>{prod.quantity}</p>
-                                    <button onClick={() => updateQuantity(prod.id, +1)}>+</button>
+                                    <button onClick={() => updateQuantity(prod.id, prod.color,+1)}>+</button>
                                 </div>
                                   <p className='price'>{formatearMoneda(prod.precio * prod.quantity)}</p>
                                   <span className='discountedPrice'>{calcularDescuento(prod.precio * prod.quantity, prod.descuento)}</span>
-                                  <DeleteOutlineIcon className='delete' onClick={() => removeItem(prod.id)}></DeleteOutlineIcon>
+                                  <DeleteOutlineIcon className='delete' onClick={() => removeItem(prod.id, prod.color)}></DeleteOutlineIcon>
                                 </div>
                             </motion.div>
                         )

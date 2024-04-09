@@ -28,43 +28,52 @@ export const CartProvider = ({ children }) => {
     }
     
     const addItem = (productToAdd) => {
-      const { id, nombre, precio, quantity, img1, img2, img3, descuento, stock } = productToAdd;
-      if (!isInCart(id)) {
-        const newProduct = { id, nombre, precio, quantity, img1, img2, img3, descuento, stock };
-        setCart(prev => [...prev, newProduct]);
-        Toast.fire({
-          icon: 'success',
-          title: `${nombre} ha sido agregado al carrito`
-        });
-      } else {
-        const updatedCart = cart.map(prod => {
-          if (prod.id === id && prod.quantity < 10) {
+      const { id, nombre, precio, quantity, img, descuento, stock, color } = productToAdd;
+    
+      // Comprobar si el producto ya está en el carrito
+      const existingProductIndex = cart.findIndex(prod => prod.id === id && prod.color === color);
+    
+      if (existingProductIndex !== -1) {
+        // Si el producto ya está en el carrito, actualizar la cantidad si es menor que 10
+        const updatedCart = cart.map((prod, index) => {
+          if (index === existingProductIndex && prod.quantity < 10) {
             return {
               ...prod,
               quantity: prod.quantity + 1
             };
-          } else {
-            return prod;
           }
+          return prod;
         });
+    
         setCart(updatedCart);
+    
+        // Mostrar el toast después de actualizar el carrito
         Toast.fire({
           icon: 'success',
           title: `${nombre} agregado al carrito`
         });
-      }
-    }
-     const removeItem = (id) => {
-        const updatedCart = cart.filter(prod => prod.id !== id)
-        setCart(updatedCart)
+      } else {
+        setCart(prev => [...prev, { id, nombre, precio, quantity, img, descuento, stock, color }]);
+    
         Toast.fire({
-          icon: "info",
-          title: `eliminado`
-        })
-    }   
-    const updateQuantity = (id, addedQuantity) => {
+          icon: 'success',
+          title: `${nombre} ha sido agregado al carrito`
+        });
+      }
+    };
+    
+    const removeItem = (id, color) => {
+      const updatedCart = cart.filter(prod => !(prod.id === id && prod.color === color));
+      setCart(updatedCart);
+      Toast.fire({
+        icon: "info",
+        title: `Producto eliminado`
+      });
+    };
+    
+    const updateQuantity = (id, color, addedQuantity) => {
       const updatedCart = cart.map(prod => {
-        if (prod.id === id && prod.quantity + addedQuantity <= 10) {
+        if (prod.id === id && prod.color === color && prod.quantity + addedQuantity <= 10) {
           const newQuantity = prod.quantity + addedQuantity;
           if (newQuantity <= 0) {
             Toast.fire({
@@ -84,9 +93,9 @@ export const CartProvider = ({ children }) => {
       }).filter(Boolean); // Remove any null values from the updatedCart array
       setCart(updatedCart);
     }
-    const updateQuantitySelect = (id, newQuantity) => {
+    const updateQuantitySelect = (id, color, newQuantity) => {
       const updatedCart = cart.map(prod => {
-        if (prod.id === id) {
+        if (prod.id === id && prod.color === color && newQuantity <= 10) {
           return {
             ...prod,
             quantity: newQuantity

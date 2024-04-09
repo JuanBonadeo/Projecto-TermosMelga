@@ -4,7 +4,7 @@ import './quantityControl.css';
 const QuantityControl = ({ prod, updateQuantity }) => {
   const handleQuantityChange = (event) => {
     const newQuantity = parseInt(event.target.value, 10);
-    updateQuantity(prod.id, newQuantity);
+    updateQuantity(prod.id, prod.color, newQuantity);
   };
 
   return (
