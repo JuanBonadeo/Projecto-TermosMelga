@@ -4,9 +4,9 @@ import './ProductCard.css'
 import { CartContext } from '../../context/CartContext';
 
 import AddToCartIcon from '../AddtoCartIcon.js/AddToCartIcon';
-import { color } from 'framer-motion';
 
-export default function ProductCard({nombre,img1,img2,img3,precio,id, descuento = 0, stock, colors}) {
+
+export default function ProductCard({nombre,img1,img2,img3,precio,id, descuento = 0, stock}) {
   const useCart = () => {
     return useContext(CartContext)
   }
@@ -23,7 +23,7 @@ export default function ProductCard({nombre,img1,img2,img3,precio,id, descuento 
       <div className='productCardContainer'>
         <Link to={`/producto/${id}`} className='img'>
           <div className='discountBadge'> -{descuento}%</div>
-          <img src={colors[0].img1} alt={`${nombre}`} loading='lazy' className='imgProduct'/>
+          <img src={img1} alt={`${nombre}`} loading='lazy' className='imgProduct'/>
         </Link>
         <div className="cardInfo">
           <div className="namePrice">
@@ -44,7 +44,7 @@ export default function ProductCard({nombre,img1,img2,img3,precio,id, descuento 
   return (
     <div className='productCardContainer'>
       <Link to={`/producto/${id}`} className='img'>
-      <img src={Array.isArray(colors) && colors[0]?.img1 ? colors[0].img1 : ''} alt={`${nombre}`} loading='lazy' className='imgProduct outOfStock'/>
+      <img src={img1} alt={`${nombre}`} loading='lazy' className='imgProduct outOfStock'/>
       </Link>
       <div className="cardInfo">
         <div className="namePrice">
@@ -60,7 +60,7 @@ export default function ProductCard({nombre,img1,img2,img3,precio,id, descuento 
 return (
   <div className='productCardContainer'>
     <Link to={`/producto/${id}`} className='img'>
-      <img src={Array.isArray(colors) && colors[0]?.img1 ? colors[0].img1 : ''} alt={`${nombre}`} loading='lazy' className='imgProduct'/>
+      <img src={img1} alt={`${nombre}`} loading='lazy' className='imgProduct'/>
     </Link>
     <div className="cardInfo">
       <div className="namePrice">

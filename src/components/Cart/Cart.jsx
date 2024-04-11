@@ -23,47 +23,7 @@ const Cart = () => {
   useEffect(() => {
     window.scrollTo(0, 0);
   }, []);
-  const buyCart = () => {
-    Swal.fire({
-      title: 'Confirmar compra',
-      text: '¿Estás seguro de que deseas realizar la compra? Seras redirigido a WhatsApp para completar la compra.',
-      icon: 'question',
-      showCancelButton: true,
-      confirmButtonText: 'Sí, comprar',
-      cancelButtonText: 'Cancelar',
-    }).then((result) => {
-      if (result.isConfirmed) {
-        let mensajePedido = 'Hola, este es mi pedido:\n\n';
-        cart.forEach((prod) => {
-          mensajePedido += `*${prod.nombre}* ${prod.color} Cantidad: *${prod.quantity}* Precio: *${calcularDescuento(prod.precio * prod.quantity,prod.descuento)}*\n`;
-        });
-        mensajePedido += `\nTotal: *${formatearMoneda(total)}*`;
-
-        // Completar con el número de WhatsApp
-        const numeroWhatsApp = '5493412290234';
-
-        function esDispositivoMovil() {
-          return /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent);
-        }
-        
-        // Construir la URL de WhatsApp
-        let urlWhatsApp = '';
-        
-        if (esDispositivoMovil()) {
-          // Si es un dispositivo móvil, abrir en la aplicación de WhatsApp
-          urlWhatsApp = `https://api.whatsapp.com/send?phone=${numeroWhatsApp}&text=${encodeURIComponent(mensajePedido)}`;
-        } else {
-          // Si es una computadora, abrir en WhatsApp Web
-          urlWhatsApp = `https://web.whatsapp.com/send?phone=${numeroWhatsApp}&text=${encodeURIComponent(mensajePedido)}`;
-        }
-        
-        // Abrir la ventana de chat
-        window.open(urlWhatsApp, '_blank');
-        window.open(urlWhatsApp, '_blank');
-        clearCart();
-      } 
-    });
-  };
+  
   return (
     
     <div className='cartContainer'>
@@ -110,7 +70,7 @@ const Cart = () => {
       className="btnTotal">
         <h5>Total de la compra: {formatearMoneda(total)}</h5>
         <Button action={() => clearCart()} label="Vaciar"/>    
-        <Button action={() => buyCart()} label="Comprar"/>    
+        <Button to={'/checkout'} label="Iniciar compra"/>    
       </motion.div>
             
 

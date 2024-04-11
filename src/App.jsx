@@ -8,6 +8,8 @@ import { CartProvider } from './context/CartContext'
 import Cart from './components/Cart/Cart'
 import ProductInfoView from './components/ProductInfo/ProudctInfoView'
 import ProductsContainer from './components/ProductsContainer/ProductsContainer'
+import FinishPurchase from './components/FinishPurchase/FinishPurchase'
+import Admin from './components/Admin/Admin'
 
 function App() {
 
@@ -23,6 +25,8 @@ function App() {
             <Route path="/producto/:productId" element={<ProductInfoView/>}/>
           <Route path="/carrito" element={<Cart/>}/>
           <Route path="/productos" element={<ProductsContainer/>}/>
+          <Route path="/checkout" element={<FinishPurchase/>}/>
+          <Route path='/admin123' element={<Admin/>}/>
           
         </Routes>  
       </div>

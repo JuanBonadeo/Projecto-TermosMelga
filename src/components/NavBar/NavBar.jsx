@@ -6,7 +6,7 @@ import Logo from '../Logo/Logo';
 import '../NavBar/navbar.css';
 import CartIcon from '../CartIcon/CartIcon';
 import { Link } from 'react-router-dom';
-import NavDropdown from 'react-bootstrap/NavDropdown';
+
 
 
 function Header() {

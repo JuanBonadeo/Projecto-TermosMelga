@@ -33,8 +33,7 @@ import '../Hero2/hero2.css';
       />
       <div className="info">
         <h2>Combos Materos</h2>
-        <p>
-          Lorem ipsum dolor sit amet consectetur adipisicing elit. Accusamus ratione sunt itaque adipisci ipsam. Praesentium quia culpa officia ea nemo commodi earum!
+        <p>¡Disfrutá del auténtico mate argentino en cualquier momento con nuestros combos materos! Incluye mate, bombilla y termo de calidad. ¡No te pierdas esta tradición única!
         </p>
         <Button label='Ver Combos' to='/categoria/combos' />
       </div>

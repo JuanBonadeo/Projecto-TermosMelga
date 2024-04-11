@@ -5,7 +5,19 @@ import Button from '../Button/Button';
 
 const Hero1 = () =>{
     return (
-      <Carousel interval={5000000}>
+    <Carousel interval={10000}>
+        <Carousel.Item className='Hero1Container'>
+          <img
+            className="imgHero1 imgHero3"
+            src='https://firebasestorage.googleapis.com/v0/b/termomelga.appspot.com/o/heros%2Fhero2Mobile.jpg?alt=media&token=4cb2bbe6-1b10-4e1b-a40e-31911921aa98'
+            alt="Third-slide"
+          />
+          <Carousel.Caption className='HeroCaption hero12'>
+            <Button label='Ver Yerbas' to='/categoria/yerbas'  />
+          </Carousel.Caption>
+        </Carousel.Item> 
+      
+      
         <Carousel.Item className='Hero1Container'>
           <img
             className="imgHero1"
@@ -27,18 +39,7 @@ const Hero1 = () =>{
             <Button label='Ver Mates' to='/categoria/mates'  />
           </Carousel.Caption>
         </Carousel.Item>
-
-        <Carousel.Item className='Hero1Container'>
-          <img
-            className="imgHero1 imgHero3"
-            src='https://firebasestorage.googleapis.com/v0/b/termomelga.appspot.com/o/heros%2Fhero2Mobile.jpg?alt=media&token=4cb2bbe6-1b10-4e1b-a40e-31911921aa98'
-            alt="Third-slide"
-          />
-          <Carousel.Caption className='HeroCaption hero12'>
-            <Button label='Ver Yerbas' to='/categoria/yerbas'  />
-          </Carousel.Caption>
-        </Carousel.Item> 
-      </Carousel>
+</Carousel>
     );
 }
 export default Hero1

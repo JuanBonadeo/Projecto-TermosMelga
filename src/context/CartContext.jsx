@@ -28,10 +28,10 @@ export const CartProvider = ({ children }) => {
     }
     
     const addItem = (productToAdd) => {
-      const { id, nombre, precio, quantity, img, descuento, stock, color } = productToAdd;
+      const { id, nombre, precio, quantity, img, descuento, stock } = productToAdd;
     
       // Comprobar si el producto ya está en el carrito
-      const existingProductIndex = cart.findIndex(prod => prod.id === id && prod.color === color);
+      const existingProductIndex = cart.findIndex(prod => prod.id === id);
     
       if (existingProductIndex !== -1) {
         // Si el producto ya está en el carrito, actualizar la cantidad si es menor que 10
@@ -53,7 +53,7 @@ export const CartProvider = ({ children }) => {
           title: `${nombre} agregado al carrito`
         });
       } else {
-        setCart(prev => [...prev, { id, nombre, precio, quantity, img, descuento, stock, color }]);
+        setCart(prev => [...prev, { id, nombre, precio, quantity, img, descuento, stock }]);
     
         Toast.fire({
           icon: 'success',
@@ -62,8 +62,8 @@ export const CartProvider = ({ children }) => {
       }
     };
     
-    const removeItem = (id, color) => {
-      const updatedCart = cart.filter(prod => !(prod.id === id && prod.color === color));
+    const removeItem = (id) => {
+      const updatedCart = cart.filter(prod => !(prod.id === id));
       setCart(updatedCart);
       Toast.fire({
         icon: "info",
@@ -71,9 +71,9 @@ export const CartProvider = ({ children }) => {
       });
     };
     
-    const updateQuantity = (id, color, addedQuantity) => {
+    const updateQuantity = (id, addedQuantity) => {
       const updatedCart = cart.map(prod => {
-        if (prod.id === id && prod.color === color && prod.quantity + addedQuantity <= 10) {
+        if (prod.id === id && prod.quantity + addedQuantity <= 10) {
           const newQuantity = prod.quantity + addedQuantity;
           if (newQuantity <= 0) {
             Toast.fire({
@@ -93,9 +93,9 @@ export const CartProvider = ({ children }) => {
       }).filter(Boolean); // Remove any null values from the updatedCart array
       setCart(updatedCart);
     }
-    const updateQuantitySelect = (id, color, newQuantity) => {
+    const updateQuantitySelect = (id, newQuantity) => {
       const updatedCart = cart.map(prod => {
-        if (prod.id === id && prod.color === color && newQuantity <= 10) {
+        if (prod.id === id  && newQuantity <= 10) {
           return {
             ...prod,
             quantity: newQuantity
