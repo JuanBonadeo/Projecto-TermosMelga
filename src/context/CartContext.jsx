@@ -28,7 +28,7 @@ export const CartProvider = ({ children }) => {
     }
     
     const addItem = (productToAdd) => {
-      const { id, nombre, precio, quantity, img, descuento, stock } = productToAdd;
+      const { id, nombre, precio, quantity, img1, descuento, stock } = productToAdd;
     
       // Comprobar si el producto ya está en el carrito
       const existingProductIndex = cart.findIndex(prod => prod.id === id);
@@ -53,7 +53,7 @@ export const CartProvider = ({ children }) => {
           title: `${nombre} agregado al carrito`
         });
       } else {
-        setCart(prev => [...prev, { id, nombre, precio, quantity, img, descuento, stock }]);
+        setCart(prev => [...prev, { id, nombre, precio, quantity, img1, descuento, stock }]);
     
         Toast.fire({
           icon: 'success',
