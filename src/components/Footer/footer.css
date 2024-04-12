@@ -3,7 +3,7 @@ footer{
     margin-top: 5em;
 }
 .footer1{
-    height: 8em;
+    height: auto;
     width: 80%;
     margin: 0 auto;
     display: flex;
@@ -12,21 +12,40 @@ footer{
     align-items: center;
     border-bottom: solid 1.5px #000000;
     border-top: solid 1.5px #000000;
+    padding: 1.5em 0;
+    gap: 3em;
     
-}.footer1 div {
+}.footer1 .footerLinks {
     display: flex;
     flex-direction: row;
     gap: 4em;
     color: #000;
-}.footer1 div a{
+}.footer1 .footerLinks a{
     color: #000;
     text-decoration: none;
     cursor: pointer;
     user-select: none;
-}.footer1 div a:hover{
+}.footer1 .footerLinks a:hover{
     color: #db0000;
     scale: 1.05;
     transition: .3s;
+}
+.logoMap{
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    gap: 10em;
+}.mapa{
+    display: flex;
+    flex-direction: column;
+
+}.mapa h5{
+    font-size: 1em;
+    color: #000;
+    font-weight: bold;
+    margin: 0;
+    padding: 0;
 }
 .footer2{
     display: flex;
@@ -56,23 +75,25 @@ footer h5{
     color: #db0000;
 }
 .light{
-    height: 100px;
-    fill: white;
+    height: 130px;
 
 }
 
 
 @media (max-width: 1200px ){
     .footer1{
-        height: 17em;
+        height: auto;
         border-top: solid 1.5px #000000;
-        padding-bottom: 1em;
-
+        gap: 1em;
         
     }
-    .footer1 div {
+    .footer1 .footerLinks {
         flex-direction: column;
         align-items: center;
+        gap: 1em;
+    }
+    .footer1 .logoMap{
+        flex-direction: column;
         gap: 1em;
     }
     .footer2{

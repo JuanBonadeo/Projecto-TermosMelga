@@ -3,23 +3,35 @@ import { useEffect, useState, useContext } from 'react';
 import { CartContext } from '../../context/CartContext'
 import '../Button/button.css';
 import Swal from 'sweetalert2';
+import { motion } from 'framer-motion';
 
 
 const FinishPurchase = () => {
     const useCart = () => {
         return useContext(CartContext)
     }
-    const { cart, total, calcularDescuento, formatearMoneda } = useCart();
-
+    const { cart, total, calcularDescuento, formatearMoneda, clearCart2 } = useCart();
+    const precioEnvio = 1000;
     useEffect(() => {
         window.scrollTo(0, 0);
     }, []);
+    const [entrega, setEntrega] = useState('envio');
+    let [totalFinal, setTotalFinal] = useState(total);
+
+    const handleChange = (event) => {
+        const selectedOption = event.target.value;
+        setEntrega(selectedOption);
+        if (selectedOption === 'envio') {
+            setTotalFinal(total + precioEnvio);
+        } else {
+            setTotalFinal(total);
+        }
+    };
 
 
     const buyCart = (e) => {
         const nombre = document.getElementById('name').value;
         const pago = document.getElementById('payment').value;
-        const entrega = document.getElementById('entrega').value;
         const domicilio = document.getElementById('address').value;
         let totalConEnvio = 0;
         e.preventDefault();
@@ -35,19 +47,19 @@ const FinishPurchase = () => {
                 let mensajePedido = 'Nombre y Apellido: ' + nombre + '\n';
                 mensajePedido += 'Metodo de Pago: ' + pago + '\n';
                 mensajePedido += 'Metodo de Entrega: ' + entrega + '\n';
-                mensajePedido += 'Domicilio: ' + domicilio + '\n\n';
                 if (entrega === 'envio') {
-                    mensajePedido += 'Costo de envio: $8000\n\n';
-                    totalConEnvio = 8000 + total;
+                    mensajePedido += 'Domicilio: ' + domicilio + '\n';
+                    mensajePedido += 'Costo de envio: '+ formatearMoneda(precioEnvio)+ '\n' ;
+                    totalFinal = total + precioEnvio;
                 }
                 mensajePedido += 'pedido:\n';
                 cart.forEach((prod) => {
                     mensajePedido += `*${prod.nombre}*  Cantidad: *${prod.quantity}* Precio: *${calcularDescuento(prod.precio * prod.quantity, prod.descuento)}*\n`;
                 });
-                mensajePedido += `\nTotal: *${formatearMoneda(total)}*`;
-                if (entrega === 'envio') {
-                    mensajePedido += `\nTotal Con Envio: *${formatearMoneda(totalConEnvio)}*`;
-                }
+                if (entrega === 'envio' ) {
+                    mensajePedido += `\nTotal Con envio  de ${formatearMoneda(precioEnvio)}: *${formatearMoneda(totalFinal)}*`;
+                } else mensajePedido += `\nTotal: *${formatearMoneda(total)}*`;
+                
 
                 // Completar con el número de WhatsApp
                 const numeroWhatsApp = '5493412290234';
@@ -70,15 +82,22 @@ const FinishPurchase = () => {
                 // Abrir la ventana de chat
                 window.open(urlWhatsApp, '_blank');
                 window.open(urlWhatsApp, '_blank');
-                clearCart();
+                clearCart2();
+                const redirectHome = () => {
+                    window.location.href = "/#/gracias";
+                };
+                redirectHome();
             }
         });
 
     }
     return (
         <div className="containerP">
-            <h1>Completa tu Pedido</h1>
-            <form onSubmit={(e) => { e.preventDefault(); buyCart(e); }}>
+            <motion.h1 initial={{ x: -1000 }} animate={{ x: 0 }}  transition={{ duration: 1, ease: "easeInOut", delay: 0.5, type: "spring" }} className="title"
+            
+            >Completa tu Pedido</motion.h1>
+            <motion.form initial={{ x: -1800 }} animate={{ x: 0 }}  transition={{ duration: 1, ease: "easeInOut", delay: 0.5, type: "spring" }}
+            onSubmit={(e) => { e.preventDefault(); buyCart(e); }}>
                 <div className="form">
                     <div className="form-group">
                         <label htmlFor="name">Nombre y Apellido:</label>
@@ -94,7 +113,7 @@ const FinishPurchase = () => {
                     </div>
                     <div className="form-group">
                         <label htmlFor='entrega'>Método de Entrega</label>
-                        <select name="entrega" id="entrega" required>
+                        <select name="entrega" id="entrega" required value={entrega} onChange={handleChange} >
                             <option value="envio">Envío a Domicilio</option>
                             <option value="retiro">Retiro en Local</option>
                         </select>
@@ -105,9 +124,10 @@ const FinishPurchase = () => {
                     </div>
                 </div>
 
-                <h4>Total Estimado:<br></br> {`${formatearMoneda(total)} + envío`}</h4>
+                <h4>Total: {formatearMoneda(total)}{entrega === 'envio' ? ' + ' + formatearMoneda(precioEnvio) + ' de envio' : ' '}</h4>
+                <h5>Si no sos de Rosario consultar precio de envio.</h5>
                 <button className="Button" type='submit'>Comprar</button>
-            </form>
+            </motion.form>
         </div>
     );
 }

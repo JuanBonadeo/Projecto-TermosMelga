@@ -51,7 +51,7 @@ export default function ProductCard({nombre,img1,img2,img3,precio,id, descuento 
           <h4>{nombre}</h4>
           <span>{formatearMoneda(precio)}</span>
         </div>
-        <AddToCartIcon onAdd={handleOnAdd}/>
+        
       </div>
       <span className='outOfStockBadge'>Sin Stock</span>
     </div>

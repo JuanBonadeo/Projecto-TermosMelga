@@ -23,7 +23,15 @@ const Cart = () => {
   useEffect(() => {
     window.scrollTo(0, 0);
   }, []);
-  
+  if(cart.length === 0){
+    return (
+      <div className='cartContainer'>
+        <h1>Carrito</h1>
+        <h2>No hay productos en el carrito</h2>
+        <Button to='/productos' label='Volver'/>
+      </div>
+    )
+  }
   return (
     
     <div className='cartContainer'>

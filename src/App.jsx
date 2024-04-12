@@ -1,4 +1,5 @@
 import './App.css'
+import { useEffect } from 'react'
 import {HashRouter as BrowserRouter, Route, Routes } from 'react-router-dom'
 import Header from './components/NavBar/NavBar'
 import HomeView from './components/HomeView/HomeView'
@@ -10,9 +11,12 @@ import ProductInfoView from './components/ProductInfo/ProudctInfoView'
 import ProductsContainer from './components/ProductsContainer/ProductsContainer'
 import FinishPurchase from './components/FinishPurchase/FinishPurchase'
 import Admin from './components/Admin/Admin'
+import GraciasXtuCompra from './components/GraciasXtuCompra/GraciasXtuCompra'
 
 function App() {
-
+  useEffect(() => {
+    window.scrollTo(-10, -10);
+  }, []);
   return (
     <div className='App'>
     <BrowserRouter>
@@ -27,6 +31,7 @@ function App() {
           <Route path="/productos" element={<ProductsContainer/>}/>
           <Route path="/checkout" element={<FinishPurchase/>}/>
           <Route path='/admin123' element={<Admin/>}/>
+          <Route path='/gracias' element={<GraciasXtuCompra/>}/>
           
         </Routes>  
       </div>
