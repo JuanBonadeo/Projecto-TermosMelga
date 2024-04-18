@@ -11,7 +11,6 @@ import Swal from 'sweetalert2';
 export const Admin = () => {
     const [image1, setImg1] = useState(null);
     const [image2, setImg2] = useState(null);
-    const [imagesListRef, setImagesListRef] = useState(ref(storage, 'Productos/mates'));
     const [category, setCategory] = useState('mates');
     const [nombre, setNombre] = useState('');
     const [imagePreview1, setImagePreview1] = useState('');
@@ -24,7 +23,6 @@ export const Admin = () => {
     const handleCategory = (e) => {
         const selectedCategory = e.target.value;
         setCategory(selectedCategory);
-        setImagesListRef(ref(storage, `Productos/${selectedCategory}`));
     }
 
     const handleImage1Change = (e) => {
@@ -52,17 +50,15 @@ export const Admin = () => {
     const addProduct = async (e) => {
         e.preventDefault();
         // Crear una referencia a la carpeta del producto
-        const productFolderRef = ref(storage, `productos/${nombre}`);
+        const capitalizedCategory = category.charAt(0).toUpperCase() + category.slice(1);
+        const productFolderRef = ref(storage, `Productos/${capitalizedCategory}/${nombre}`);
 
-        // Subir la primera imagen
         let imageUrl1 = '';
         if (image1) {
             const image1Ref = ref(productFolderRef, image1.name);
             await uploadBytesResumable(image1Ref, image1);
             imageUrl1 = await getDownloadURL(image1Ref);
         }
-        
-        // Subir la segunda imagen
         let imageUrl2 = '';
         if (image2) {
             const image2Ref = ref(productFolderRef, image2.name);
